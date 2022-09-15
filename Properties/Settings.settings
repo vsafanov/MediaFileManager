@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MediaFileManager.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="DefaultMediaFilesExtension" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">jpg, jpeg, png, gif, tiff, bmp, jpe,pcd,avi, mp4, wmp, mkv, m4v, wmv, mov, wav,qtff,mts,m2ts</Value>
+    </Setting>
+    <Setting Name="MinFileSizeToCopy" Type="System.Int64" Scope="Application">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="SelectedMediaFilesExtension" Type="System.String" Scope="User">
+      <Value Profile="(Default)">jpg, jpeg, png, gif, tiff, bmp, jpe,pcd,avi, mp4, wmp, mkv, m4v, wmv, mov, wav,qtff,mts,m2ts</Value>
+    </Setting>
+    <Setting Name="OverwriteFiles" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SelectedOverwriteFiles" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SelectedMinFileSizeToCopy" Type="System.Int64" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
