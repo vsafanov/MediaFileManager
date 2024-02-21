@@ -1,11 +1,10 @@
-﻿using MetadataExtractor;
+﻿using System.Globalization;
+using MetadataExtractor;
 using Serilog;
-using System.Globalization;
-
 // using Microsoft.Extensions.Logging;
 using Directory = System.IO.Directory;
 
-namespace MediaFileManager
+namespace MediaFileManager.Lib
 {
     public class MediaManager
     {
@@ -28,21 +27,7 @@ namespace MediaFileManager
             GetAllMediaFiles();
         }
 
-        private void AddVideoFileToList(string file)
-        {
-            FileInfo info = new FileInfo(file);
-
-            mediaFiles.Add(new MediaFile
-            {
-                FilePath = file,
-                TimeStamp = info.LastWriteTime,
-                FileSize = info.Length,
-                FileType = MediaFileType.Video,
-                FileName = info.Name
-            });
-        }
-
-        private void AddImageFileToList(string file)
+        private void AddMediaFileToList(string file, MediaFileType fileType)
         {
             IReadOnlyList<MetadataExtractor.Directory> directories;
             try
@@ -51,6 +36,12 @@ namespace MediaFileManager
             }
             catch (Exception ex)
             {
+                //try to get video file metadata with FileInfo()
+                if (fileType == MediaFileType.Video)
+                {
+                    AddVideoFileToList(file);
+                    return;
+                }
                 _logger.Warning(ex.Message + " : " + file);
                 corruptedFiles.Add(file);
                 Print("File is corrupted or not an image:" + file, ConsoleColor.Red);
@@ -59,52 +50,39 @@ namespace MediaFileManager
 
             try
             {
-                var dateTaken = directories.SelectMany(dir => dir.Tags).FirstOrDefault(t => t.Name == "Date/Time")?.Description;
-                var dateModified = directories.SelectMany(dir => dir.Tags).FirstOrDefault(t => t.Name == "File Modified Date")?.Description;
-                var fileSize = directories.SelectMany(dir => dir.Tags).FirstOrDefault(t => t.Name == "File Size")?.Description;
-                var fileName = directories.SelectMany(dir => dir.Tags).FirstOrDefault(t => t.Name == "File Name")?.Description;
+                // var dateTaken = directories.SelectMany(dir => dir.Tags).FirstOrDefault(t => t.Name == "Date/Time")?.Description;
+                var tags         = directories.SelectMany(dir => dir.Tags).ToList();
+                var dateTaken    = tags.FirstOrDefault(t => t.Name == "Date/Time Original")?.Description;
+                var dateModified = tags.FirstOrDefault(t => t.Name == "File Modified Date")?.Description;
+                var fileSize     = tags.FirstOrDefault(t => t.Name == "File Size")?.Description;
+                var fileName     = tags.FirstOrDefault(t => t.Name == "File Name")?.Description;
 
-                //foreach (var directory in directories)
-                //{
-                //    foreach (var tag in directory.Tags)
-                //    {
-                //       //Console.WriteLine($"{directory.Name} - {tag.Name} = {tag.Description}");
-                //        if (tag.Name == "Date/Time")
-                //        {
-                //            //dateTaken = tag.Description;
-                //            Console.WriteLine(tag.Name + " = " + tag.Description);
-                //        }
-                //        if (tag.Name == "File Modified Date")
-                //        {
-                //            //dateModified = tag.Description;
-                //            Console.WriteLine(tag.Name + " = " + tag.Description);
-                //        }
-                //    }
-                //}
+                // var subIfdDirectory = directories.OfType<ExifSubIfdDirectory>().FirstOrDefault();
+                // var dateTime = subIfdDirectory?.GetDescription(ExifDirectoryBase.TagDateTimeOriginal);
 
-                var finalDate = dateTaken;
-                var format = "yyyy:MM:dd HH:mm:ss";
+                var format = fileType == MediaFileType.Video?"ddd MMM dd HH:mm:ss yyyy":"yyyy:MM:dd HH:mm:ss";
+                DateTime? date = null;
 
-                if (string.IsNullOrEmpty(dateTaken) || dateTaken == "0000:00:00 00:00:00")
+                if (!string.IsNullOrEmpty(dateTaken) && dateTaken != "0000:00:00 00:00:00")
                 {
-                    finalDate = dateModified;
-                    format = "ddd MMM dd HH:mm:ss zzz yyyy";
+                    date = DateTime.ParseExact((fileType == MediaFileType.Video ? dateModified : dateTaken) ?? string.Empty, format, CultureInfo.InvariantCulture);
                 }
 
-                var d = DateTime.ParseExact(finalDate ?? string.Empty, format, CultureInfo.InvariantCulture);
                 var size = long.Parse(fileSize?.Replace("bytes", "") ?? "0".Trim());
+
                 if (size < settings.MinFileSizeToCopy)
                 {
                     //Print("File " + file + " is less than " + FormatBytes(settings.MinFileSizeToCopy),ConsoleColor.Red);
                     //Log.Info("File " + file + " is less than " + FormatBytes(settings.MinFileSizeToCopy));
                     return;
                 }
+
                 mediaFiles.Add(new MediaFile
                 {
                     FilePath = file,
-                    TimeStamp = d,
+                    TimeStamp = date,
                     FileSize = size,
-                    FileType = MediaFileType.Image,
+                    FileType = fileType == MediaFileType.Image ? MediaFileType.Image : MediaFileType.Video,
                     FileName = fileName
                 });
             }
@@ -124,32 +102,48 @@ namespace MediaFileManager
 
             var allMediaFiles = Directory.GetFiles(settings.SourceFolder, "*.*", SearchOption.AllDirectories).Where(f => filters.Any(f.ToLower().EndsWith)).ToList();
 
-            Parallel.ForEach(allMediaFiles, new ParallelOptions { MaxDegreeOfParallelism = 8 }, file =>
+            foreach (var file in allMediaFiles)
+
+            // Parallel.ForEach(allMediaFiles, new ParallelOptions { MaxDegreeOfParallelism = 8 }, file =>
+            {
+                var mimeType = MimeMapping.MimeUtility.GetMimeMapping(file);
+                switch (mimeType.Substring(0, mimeType.IndexOf("/", StringComparison.OrdinalIgnoreCase)))
                 {
-                    var mimeType = MimeMapping.MimeUtility.GetMimeMapping(file);
-                    switch (mimeType.Substring(0, mimeType.IndexOf("/", StringComparison.OrdinalIgnoreCase)))
-                    {
-                        case "image":
-                            AddImageFileToList(file);
-                            break;
+                    case "image":
+                        AddMediaFileToList(file, MediaFileType.Image);
+                        break;
 
-                        case "video":
-                        case "audio":
-                        case "model": //video type model/vnd.mts
-                        case "application": //video type application/octet-stream
-                            AddVideoFileToList(file);
-                            break;
+                    case "video":
+                    case "audio":
+                    case "model": //video type model/vnd.mts
+                    case "application": //video type application/octet-stream
+                        AddMediaFileToList(file, MediaFileType.Video);
+                        break;
 
-                        default:
-                            exceptions.Add($"File format [{mimeType}] is not media type:{file}");
-                            Print($"File format is [{mimeType}] is not media type:{file}", ConsoleColor.Red);
-                            break;
-                    }
+                    default:
+                        exceptions.Add($"File format [{mimeType}] is not media type:{file}");
+                        Print($"File format is [{mimeType}] is not media type:{file}", ConsoleColor.Red);
+                        break;
                 }
-            );
+            }
+            // );
 
             //remove all files that less in size than the settings(in bytes)
             mediaFiles = mediaFiles.Where(f => f.FileSize > settings.MinFileSizeToCopy).ToList();
+        }
+
+        private void AddVideoFileToList(string file)
+        {
+            FileInfo info = new FileInfo(file);
+
+            mediaFiles.Add(new MediaFile
+            {
+                FilePath = file,
+                TimeStamp = info.LastWriteTime,
+                FileSize = info.Length,
+                FileType = MediaFileType.Video,
+                FileName = info.Name
+            });
         }
 
         /// <summary>
@@ -208,7 +202,8 @@ namespace MediaFileManager
                 OperationDuration = timeEnd.Subtract(startTime),
                 TotalFiles = mediaFiles.Count,
                 FilesNotCopied = filesNotCopied,
-                CorruptedFilesList = corruptedFiles
+                CorruptedFilesList = corruptedFiles,
+                UndatedFiles = mediaFiles.Count(p => p.TimeStamp is null)
             };
         }
 
@@ -230,7 +225,7 @@ namespace MediaFileManager
             var destFileInfo = new FileInfo(destFilePath);
             try
             {
-                var date = mediaFile.TimeStamp.ToString("yy-MM-dd");
+                var date = mediaFile.TimeStamp?.ToString("yy-MM-dd");
                 var newFileName = destFilePath.Replace(".", $"_{date}.");
 
                 //overwrite file is true logic
@@ -275,8 +270,15 @@ namespace MediaFileManager
 
         private string CreateFolderPath(MediaFile mediaFile)
         {
+            if (mediaFile.TimeStamp is null)
+            {
+                var dir = $@"{settings.TargetFolder}\Photos without Date Taken\";
+                CreateDirectory(dir);
+                return dir;
+            }
+
             //create year directory
-            var yearFolder = $@"{settings.TargetFolder}\{mediaFile.TimeStamp.Year}";
+            var yearFolder = $@"{settings.TargetFolder}\{mediaFile.TimeStamp?.Year}";
             CreateDirectory(yearFolder);
 
             switch (settings.CreationTemplate)
@@ -338,9 +340,9 @@ namespace MediaFileManager
 
         private void CreateDirectory(string path)
         {
-            if (!Directory.Exists(path))
+            if (!Directory.Exists(path) && path != null)
             {
-                if (path != null) Directory.CreateDirectory(path);
+                Directory.CreateDirectory(path);
             }
         }
 
@@ -372,6 +374,34 @@ namespace MediaFileManager
             return new Response
             {
                 ListOfNewFiles = newFiles,
+                OperationDuration = DateTime.Now.Subtract(startTime)
+            };
+        }
+
+        public Response FindFilesBySize(FindFileBySizeConfig config)
+        {
+            var imageFilesExt = ".jpg,.jpeg,.png,.gif,.tiff,.bmp,.jpe,.pcd".Split(',');
+
+            var filters = settings.MediaFileExtensions.Split(',').Select(t => "." + t.Trim().ToLower());
+
+            var videoFilesExt = filters.Where(f=>!imageFilesExt.Contains(f));
+
+            var fileTypeToSearch = config.SelectedFolder.ToLower() == "video"?videoFilesExt:imageFilesExt;
+
+            var filteredImages = Directory.GetFiles(config.SelectedFolder, "*.*", SearchOption.AllDirectories)
+            .Select(file=> new FileInfo(file)).Where(file => file.Length < config.MaxFileSize * 1024 && fileTypeToSearch.Contains(file.Extension))
+            .Select(f => new MediaFile()
+            {
+                FileName = f.Name,
+                FilePath = f.FullName,
+                FileType = config.SelectedFolder.ToLower() == "video"?MediaFileType.Video:MediaFileType.Image,
+                FileSize = f.Length,
+                TimeStamp = f.LastWriteTime
+            });
+
+            return new Response
+            {
+                ListOfNewFiles = filteredImages.ToList(),
                 OperationDuration = DateTime.Now.Subtract(startTime)
             };
         }

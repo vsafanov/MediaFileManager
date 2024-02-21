@@ -1,4 +1,5 @@
 ﻿
+using MediaFileManager.Lib;
 using MediaFileManager.Reporting;
 using Serilog;
 
@@ -15,7 +16,7 @@ namespace MediaFileManager
 
         public string SourceFolderPath { get; set; }
         public string TargetFolderPath { get; set; }
-         
+
         private void btnCopyFiles_Click(object sender, EventArgs e)
         {
             //DialogForm.StartProgress(this);
@@ -58,7 +59,8 @@ namespace MediaFileManager
             var radioBtn = sender as RadioButton;
             toolTipTemplate.IsBalloon = true;
 
-            if (radioBtn != null) toolTipTemplate.Show(radioBtn.Text, radioBtn);
+            if (radioBtn != null)
+                toolTipTemplate.Show(radioBtn.Text, radioBtn);
         }
 
         private void Templates_Load(object sender, EventArgs e)
@@ -93,9 +95,9 @@ namespace MediaFileManager
                         btnCopyFiles.Enabled = false;
                         break;
                     }
-                    radioBtnYearMix.Enabled           = true;
-                    radioBtnYearMonthMix.Enabled      = true;
-                    radioBtnYearPicVideo.Enabled      = true;
+                    radioBtnYearMix.Enabled = true;
+                    radioBtnYearMonthMix.Enabled = true;
+                    radioBtnYearPicVideo.Enabled = true;
                     radioBtnYearMonthPicVideo.Enabled = true;
                     warning = String.Empty;
                     break;

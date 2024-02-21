@@ -1,13 +1,18 @@
 ﻿
+using MediaFileManager.Lib;
 using MediaFileManager.Utilities;
 
 namespace MediaFileManager.Reporting
 {
     public partial class NewFilesInSource : Form
     {
-        public NewFilesInSource()
+        public NewFilesInSource(string title = null)
         {
             InitializeComponent();
+            if (!string.IsNullOrEmpty(title))
+            {
+                this.Text = title;
+            }
         }
 
         public void LoadDataGrid(Response response)
@@ -22,7 +27,7 @@ namespace MediaFileManager.Reporting
                 FilePath = x.FilePath,
                 FileSize = Helper.FormatBytes(x.FileSize),
                 FileType = x.FileType.ToString(),
-                TimeStamp = x.TimeStamp.ToShortDateString()
+                TimeStamp = x.TimeStamp?.ToShortDateString()
             }).ToList();
 
             var list = new SortableBindingList<GridObject>(source);

@@ -1,6 +1,7 @@
 ﻿
-using MediaFileManager.Utilities;
+using MediaFileManager.Lib;
 using MediaFileManager.Properties;
+using MediaFileManager.Utilities;
 
 namespace MediaFileManager.Reporting
 {
@@ -43,7 +44,7 @@ namespace MediaFileManager.Reporting
         {
             foreach (var item in list)
             {
-                var parentText = item.Key + " from " + item.Value[0].TimeStamp.ToShortDateString() + " (Total of " + item.Value.Count + ")";
+                var parentText = item.Key + " from " + item.Value[0].TimeStamp?.ToShortDateString() + " (Total of " + item.Value.Count + ")";
                 var p = treeView1.Nodes.Add(item.Key, parentText, item.Value[0].FileType.ToString());
                 p.SelectedImageKey = item.Value[0].FileType.ToString();
                 foreach (var mediaFile in item.Value)
@@ -67,7 +68,7 @@ namespace MediaFileManager.Reporting
                 FilePath = x.FilePath,
                 FileSize = Helper.FormatBytes(x.FileSize),
                 x.FileType,
-                TimeStamp = x.TimeStamp.ToShortDateString()
+                TimeStamp = x.TimeStamp?.ToShortDateString()
             }).ToList();
 
             var listColumns = "File Name,File Path,File Size,Time Stamp,Time Stamp";
@@ -89,7 +90,8 @@ namespace MediaFileManager.Reporting
         private void btnOpenInFolder_Click(object sender, EventArgs e)
         {
 
-            if (treeView1.SelectedNode == null) return; 
+            if (treeView1.SelectedNode == null)
+                return;
 
             Helper.SelectFileInFolder(treeView1.SelectedNode.Text);
         }
@@ -101,12 +103,13 @@ namespace MediaFileManager.Reporting
 
         private void btnPreview_Click(object sender, EventArgs e)
         {
-            if (treeView1.SelectedNode == null) return; 
+            if (treeView1.SelectedNode == null)
+                return;
 
             Helper.OpenFile(treeView1.SelectedNode.Text);
         }
 
-      
+
         private void btnSearch_Click(object sender, EventArgs e)
         {
             var filter = response.ListOfDuplicatedFiles;
@@ -119,6 +122,6 @@ namespace MediaFileManager.Reporting
             PopulateTreeView(filter);
         }
 
-      
+
     }
 }

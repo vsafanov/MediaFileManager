@@ -1,12 +1,12 @@
-﻿namespace MediaFileManager
+﻿namespace MediaFileManager.Lib
 {
-        public struct MediaFile
-        {
-            public string FilePath;
-            public string FileName;
-            public DateTime TimeStamp;
-            public long FileSize;
-            public MediaFileType FileType;
+    public struct MediaFile
+    {
+        public string FilePath;
+        public string FileName;
+        public DateTime? TimeStamp;
+        public long FileSize;
+        public MediaFileType FileType;
 
-        }
+    }
 }

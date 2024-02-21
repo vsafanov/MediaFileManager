@@ -29,268 +29,291 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CopiedFiles));
-            this.gridNotCopied = new System.Windows.Forms.DataGridView();
-            this.gridErrors = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblTotalFiles = new System.Windows.Forms.Label();
-            this.lblSkipped = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblCopied = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.lblDuration = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.listViewCorrupted = new System.Windows.Forms.ListView();
-            this.btnShowErrors = new System.Windows.Forms.Button();
-            this.btnShowCorrupted = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            ((System.ComponentModel.ISupportInitialize)(this.gridNotCopied)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridErrors)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            this.SuspendLayout();
+            gridNotCopied = new DataGridView();
+            gridErrors = new DataGridView();
+            label1 = new Label();
+            lblTotalFiles = new Label();
+            lblSkipped = new Label();
+            label4 = new Label();
+            lblCopied = new Label();
+            label6 = new Label();
+            lblDuration = new Label();
+            label7 = new Label();
+            listViewCorrupted = new ListView();
+            btnShowErrors = new Button();
+            btnShowCorrupted = new Button();
+            button1 = new Button();
+            label2 = new Label();
+            label3 = new Label();
+            splitContainer1 = new SplitContainer();
+            lblUndated = new Label();
+            label8 = new Label();
+            ((System.ComponentModel.ISupportInitialize)gridNotCopied).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)gridErrors).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
+            splitContainer1.Panel1.SuspendLayout();
+            splitContainer1.Panel2.SuspendLayout();
+            splitContainer1.SuspendLayout();
+            SuspendLayout();
             // 
             // gridNotCopied
             // 
-            this.gridNotCopied.AllowUserToAddRows = false;
-            this.gridNotCopied.AllowUserToDeleteRows = false;
-            this.gridNotCopied.AllowUserToOrderColumns = true;
-            this.gridNotCopied.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.gridNotCopied.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.gridNotCopied.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.gridNotCopied.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridNotCopied.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridNotCopied.Location = new System.Drawing.Point(0, 0);
-            this.gridNotCopied.MultiSelect = false;
-            this.gridNotCopied.Name = "gridNotCopied";
-            this.gridNotCopied.ReadOnly = true;
-            this.gridNotCopied.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridNotCopied.Size = new System.Drawing.Size(978, 573);
-            this.gridNotCopied.TabIndex = 0;
-            this.gridNotCopied.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridNotCopied_CellContentClick);
-            this.gridNotCopied.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gridNotCopied_CellMouseDoubleClick);
+            gridNotCopied.AllowUserToAddRows = false;
+            gridNotCopied.AllowUserToDeleteRows = false;
+            gridNotCopied.AllowUserToOrderColumns = true;
+            gridNotCopied.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            gridNotCopied.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
+            gridNotCopied.BackgroundColor = SystemColors.ControlLightLight;
+            gridNotCopied.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            gridNotCopied.Dock = DockStyle.Fill;
+            gridNotCopied.Location = new Point(0, 0);
+            gridNotCopied.MultiSelect = false;
+            gridNotCopied.Name = "gridNotCopied";
+            gridNotCopied.ReadOnly = true;
+            gridNotCopied.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            gridNotCopied.Size = new Size(978, 573);
+            gridNotCopied.TabIndex = 0;
+            gridNotCopied.CellContentClick += gridNotCopied_CellContentClick;
+            gridNotCopied.CellMouseDoubleClick += gridNotCopied_CellMouseDoubleClick;
             // 
             // gridErrors
             // 
-            this.gridErrors.AllowUserToAddRows = false;
-            this.gridErrors.AllowUserToDeleteRows = false;
-            this.gridErrors.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.gridErrors.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.gridErrors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridErrors.Location = new System.Drawing.Point(0, 324);
-            this.gridErrors.Name = "gridErrors";
-            this.gridErrors.ReadOnly = true;
-            this.gridErrors.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.gridErrors.Size = new System.Drawing.Size(808, 246);
-            this.gridErrors.TabIndex = 2;
-            this.gridErrors.Visible = false;
+            gridErrors.AllowUserToAddRows = false;
+            gridErrors.AllowUserToDeleteRows = false;
+            gridErrors.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            gridErrors.BackgroundColor = SystemColors.ControlLightLight;
+            gridErrors.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            gridErrors.Location = new Point(0, 324);
+            gridErrors.Name = "gridErrors";
+            gridErrors.ReadOnly = true;
+            gridErrors.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            gridErrors.Size = new Size(808, 246);
+            gridErrors.TabIndex = 2;
+            gridErrors.Visible = false;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label1.Location = new System.Drawing.Point(13, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 17);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Total Files: ";
+            label1.AutoSize = true;
+            label1.Font = new Font("Microsoft Sans Serif", 9F);
+            label1.Location = new Point(13, 17);
+            label1.Name = "label1";
+            label1.Size = new Size(69, 15);
+            label1.TabIndex = 3;
+            label1.Text = "Total Files: ";
             // 
             // lblTotalFiles
             // 
-            this.lblTotalFiles.AutoSize = true;
-            this.lblTotalFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.lblTotalFiles.Location = new System.Drawing.Point(117, 17);
-            this.lblTotalFiles.Name = "lblTotalFiles";
-            this.lblTotalFiles.Size = new System.Drawing.Size(56, 17);
-            this.lblTotalFiles.TabIndex = 4;
-            this.lblTotalFiles.Text = "number";
+            lblTotalFiles.AutoSize = true;
+            lblTotalFiles.Font = new Font("Microsoft Sans Serif", 9F);
+            lblTotalFiles.Location = new Point(117, 17);
+            lblTotalFiles.Name = "lblTotalFiles";
+            lblTotalFiles.Size = new Size(50, 15);
+            lblTotalFiles.TabIndex = 4;
+            lblTotalFiles.Text = "number";
             // 
             // lblSkipped
             // 
-            this.lblSkipped.AutoSize = true;
-            this.lblSkipped.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.lblSkipped.Location = new System.Drawing.Point(117, 40);
-            this.lblSkipped.Name = "lblSkipped";
-            this.lblSkipped.Size = new System.Drawing.Size(56, 17);
-            this.lblSkipped.TabIndex = 6;
-            this.lblSkipped.Text = "number";
+            lblSkipped.AutoSize = true;
+            lblSkipped.Font = new Font("Microsoft Sans Serif", 9F);
+            lblSkipped.Location = new Point(117, 40);
+            lblSkipped.Name = "lblSkipped";
+            lblSkipped.Size = new Size(50, 15);
+            lblSkipped.TabIndex = 6;
+            lblSkipped.Text = "number";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label4.Location = new System.Drawing.Point(13, 40);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(96, 17);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Files Skipped:";
+            label4.AutoSize = true;
+            label4.Font = new Font("Microsoft Sans Serif", 9F);
+            label4.Location = new Point(13, 40);
+            label4.Name = "label4";
+            label4.Size = new Size(84, 15);
+            label4.TabIndex = 5;
+            label4.Text = "Files Skipped:";
             // 
             // lblCopied
             // 
-            this.lblCopied.AutoSize = true;
-            this.lblCopied.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.lblCopied.Location = new System.Drawing.Point(117, 66);
-            this.lblCopied.Name = "lblCopied";
-            this.lblCopied.Size = new System.Drawing.Size(56, 17);
-            this.lblCopied.TabIndex = 8;
-            this.lblCopied.Text = "number";
+            lblCopied.AutoSize = true;
+            lblCopied.Font = new Font("Microsoft Sans Serif", 9F);
+            lblCopied.Location = new Point(117, 63);
+            lblCopied.Name = "lblCopied";
+            lblCopied.Size = new Size(50, 15);
+            lblCopied.TabIndex = 8;
+            lblCopied.Text = "number";
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label6.Location = new System.Drawing.Point(13, 66);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(89, 17);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "Files Copied:";
+            label6.AutoSize = true;
+            label6.Font = new Font("Microsoft Sans Serif", 9F);
+            label6.Location = new Point(13, 63);
+            label6.Name = "label6";
+            label6.Size = new Size(78, 15);
+            label6.TabIndex = 7;
+            label6.Text = "Files Copied:";
             // 
             // lblDuration
             // 
-            this.lblDuration.AutoSize = true;
-            this.lblDuration.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.lblDuration.Location = new System.Drawing.Point(117, 90);
-            this.lblDuration.Name = "lblDuration";
-            this.lblDuration.Size = new System.Drawing.Size(34, 17);
-            this.lblDuration.TabIndex = 10;
-            this.lblDuration.Text = "time";
+            lblDuration.AutoSize = true;
+            lblDuration.Font = new Font("Microsoft Sans Serif", 9F);
+            lblDuration.Location = new Point(866, 17);
+            lblDuration.Name = "lblDuration";
+            lblDuration.Size = new Size(31, 15);
+            lblDuration.TabIndex = 10;
+            lblDuration.Text = "time";
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label7.Location = new System.Drawing.Point(13, 90);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(66, 17);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "Duration:";
+            label7.AutoSize = true;
+            label7.Font = new Font("Microsoft Sans Serif", 9F);
+            label7.Location = new Point(762, 17);
+            label7.Name = "label7";
+            label7.Size = new Size(57, 15);
+            label7.TabIndex = 9;
+            label7.Text = "Duration:";
             // 
             // listViewCorrupted
             // 
-            this.listViewCorrupted.Alignment = System.Windows.Forms.ListViewAlignment.Left;
-            this.listViewCorrupted.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.listViewCorrupted.GridLines = true;
-            this.listViewCorrupted.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.listViewCorrupted.Location = new System.Drawing.Point(0, 380);
-            this.listViewCorrupted.MultiSelect = false;
-            this.listViewCorrupted.Name = "listViewCorrupted";
-            this.listViewCorrupted.ShowItemToolTips = true;
-            this.listViewCorrupted.Size = new System.Drawing.Size(576, 190);
-            this.listViewCorrupted.TabIndex = 11;
-            this.listViewCorrupted.UseCompatibleStateImageBehavior = false;
-            this.listViewCorrupted.View = System.Windows.Forms.View.List;
-            this.listViewCorrupted.Visible = false;
-            this.listViewCorrupted.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListViewCorruptedOnMouseDoubleClick);
+            listViewCorrupted.Alignment = ListViewAlignment.Left;
+            listViewCorrupted.Font = new Font("Microsoft Sans Serif", 9F);
+            listViewCorrupted.GridLines = true;
+            listViewCorrupted.HeaderStyle = ColumnHeaderStyle.Nonclickable;
+            listViewCorrupted.Location = new Point(0, 380);
+            listViewCorrupted.MultiSelect = false;
+            listViewCorrupted.Name = "listViewCorrupted";
+            listViewCorrupted.ShowItemToolTips = true;
+            listViewCorrupted.Size = new Size(576, 190);
+            listViewCorrupted.TabIndex = 11;
+            listViewCorrupted.UseCompatibleStateImageBehavior = false;
+            listViewCorrupted.View = View.List;
+            listViewCorrupted.Visible = false;
+            listViewCorrupted.MouseDoubleClick += ListViewCorruptedOnMouseDoubleClick;
             // 
             // btnShowErrors
             // 
-            this.btnShowErrors.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.btnShowErrors.Location = new System.Drawing.Point(33, 763);
-            this.btnShowErrors.Name = "btnShowErrors";
-            this.btnShowErrors.Size = new System.Drawing.Size(100, 30);
-            this.btnShowErrors.TabIndex = 12;
-            this.btnShowErrors.Text = "Show Errors";
-            this.btnShowErrors.UseVisualStyleBackColor = true;
-            this.btnShowErrors.Click += new System.EventHandler(this.btnShowErrors_Click);
+            btnShowErrors.Font = new Font("Microsoft Sans Serif", 9F);
+            btnShowErrors.Location = new Point(33, 763);
+            btnShowErrors.Name = "btnShowErrors";
+            btnShowErrors.Size = new Size(100, 30);
+            btnShowErrors.TabIndex = 12;
+            btnShowErrors.Text = "Show Errors";
+            btnShowErrors.UseVisualStyleBackColor = true;
+            btnShowErrors.Click += btnShowErrors_Click;
             // 
             // btnShowCorrupted
             // 
-            this.btnShowCorrupted.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.btnShowCorrupted.Location = new System.Drawing.Point(154, 763);
-            this.btnShowCorrupted.Name = "btnShowCorrupted";
-            this.btnShowCorrupted.Size = new System.Drawing.Size(126, 30);
-            this.btnShowCorrupted.TabIndex = 13;
-            this.btnShowCorrupted.Text = "Show Corrupted";
-            this.btnShowCorrupted.UseVisualStyleBackColor = true;
-            this.btnShowCorrupted.Click += new System.EventHandler(this.btnShowCorrupted_Click);
+            btnShowCorrupted.Font = new Font("Microsoft Sans Serif", 9F);
+            btnShowCorrupted.Location = new Point(154, 763);
+            btnShowCorrupted.Name = "btnShowCorrupted";
+            btnShowCorrupted.Size = new Size(126, 30);
+            btnShowCorrupted.TabIndex = 13;
+            btnShowCorrupted.Text = "Show Corrupted";
+            btnShowCorrupted.UseVisualStyleBackColor = true;
+            btnShowCorrupted.Click += btnShowCorrupted_Click;
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.button1.Location = new System.Drawing.Point(890, 763);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 30);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Close";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            button1.Font = new Font("Microsoft Sans Serif", 9F);
+            button1.Location = new Point(890, 763);
+            button1.Name = "button1";
+            button1.Size = new Size(100, 30);
+            button1.TabIndex = 14;
+            button1.Text = "Close";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(13, 122);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(177, 17);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "Duplicated Media Files ";
+            label2.AutoSize = true;
+            label2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
+            label2.Location = new Point(13, 122);
+            label2.Name = "label2";
+            label2.Size = new Size(159, 15);
+            label2.TabIndex = 15;
+            label2.Text = "Duplicated Media Files ";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label3.Location = new System.Drawing.Point(185, 122);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(217, 17);
-            this.label3.TabIndex = 16;
-            this.label3.Text = "(Below files has not been copied)";
+            label3.AutoSize = true;
+            label3.Font = new Font("Microsoft Sans Serif", 9F);
+            label3.Location = new Point(185, 122);
+            label3.Name = "label3";
+            label3.Size = new Size(188, 15);
+            label3.TabIndex = 16;
+            label3.Text = "(Below files has not been copied)";
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Location = new System.Drawing.Point(12, 20);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            splitContainer1.Location = new Point(12, 20);
+            splitContainer1.Name = "splitContainer1";
+            splitContainer1.Orientation = Orientation.Horizontal;
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.lblCopied);
-            this.splitContainer1.Panel1.Controls.Add(this.label3);
-            this.splitContainer1.Panel1.Controls.Add(this.label1);
-            this.splitContainer1.Panel1.Controls.Add(this.label2);
-            this.splitContainer1.Panel1.Controls.Add(this.lblTotalFiles);
-            this.splitContainer1.Panel1.Controls.Add(this.label4);
-            this.splitContainer1.Panel1.Controls.Add(this.lblSkipped);
-            this.splitContainer1.Panel1.Controls.Add(this.label6);
-            this.splitContainer1.Panel1.Controls.Add(this.label7);
-            this.splitContainer1.Panel1.Controls.Add(this.lblDuration);
+            splitContainer1.Panel1.Controls.Add(lblUndated);
+            splitContainer1.Panel1.Controls.Add(label8);
+            splitContainer1.Panel1.Controls.Add(lblCopied);
+            splitContainer1.Panel1.Controls.Add(label3);
+            splitContainer1.Panel1.Controls.Add(label1);
+            splitContainer1.Panel1.Controls.Add(label2);
+            splitContainer1.Panel1.Controls.Add(lblTotalFiles);
+            splitContainer1.Panel1.Controls.Add(label4);
+            splitContainer1.Panel1.Controls.Add(lblSkipped);
+            splitContainer1.Panel1.Controls.Add(label6);
+            splitContainer1.Panel1.Controls.Add(label7);
+            splitContainer1.Panel1.Controls.Add(lblDuration);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.gridNotCopied);
-            this.splitContainer1.Panel2.Controls.Add(this.gridErrors);
-            this.splitContainer1.Panel2.Controls.Add(this.listViewCorrupted);
-            this.splitContainer1.Size = new System.Drawing.Size(978, 725);
-            this.splitContainer1.SplitterDistance = 148;
-            this.splitContainer1.TabIndex = 17;
+            splitContainer1.Panel2.Controls.Add(gridNotCopied);
+            splitContainer1.Panel2.Controls.Add(gridErrors);
+            splitContainer1.Panel2.Controls.Add(listViewCorrupted);
+            splitContainer1.Size = new Size(978, 725);
+            splitContainer1.SplitterDistance = 148;
+            splitContainer1.TabIndex = 17;
+            // 
+            // lblUndated
+            // 
+            lblUndated.AutoSize = true;
+            lblUndated.Font = new Font("Microsoft Sans Serif", 9F);
+            lblUndated.Location = new Point(117, 87);
+            lblUndated.Name = "lblUndated";
+            lblUndated.Size = new Size(50, 15);
+            lblUndated.TabIndex = 18;
+            lblUndated.Text = "number";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Microsoft Sans Serif", 9F);
+            label8.Location = new Point(13, 87);
+            label8.Name = "label8";
+            label8.Size = new Size(98, 15);
+            label8.TabIndex = 17;
+            label8.Text = "Undated Photos:";
             // 
             // CopiedFiles
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.ClientSize = new System.Drawing.Size(1000, 807);
-            this.Controls.Add(this.splitContainer1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnShowCorrupted);
-            this.Controls.Add(this.btnShowErrors);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "CopiedFiles";
-            this.Text = "Report for Copied Files";
-            ((System.ComponentModel.ISupportInitialize)(this.gridNotCopied)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridErrors)).EndInit();
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(6F, 13F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.HighlightText;
+            ClientSize = new Size(1000, 807);
+            Controls.Add(splitContainer1);
+            Controls.Add(button1);
+            Controls.Add(btnShowCorrupted);
+            Controls.Add(btnShowErrors);
+            Font = new Font("Microsoft Sans Serif", 8F);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Name = "CopiedFiles";
+            Text = "Report for Copied Files";
+            ((System.ComponentModel.ISupportInitialize)gridNotCopied).EndInit();
+            ((System.ComponentModel.ISupportInitialize)gridErrors).EndInit();
+            splitContainer1.Panel1.ResumeLayout(false);
+            splitContainer1.Panel1.PerformLayout();
+            splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
+            splitContainer1.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion
@@ -312,5 +335,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.SplitContainer splitContainer1;
+        private Label label5;
+        private Label label8;
+        private Label lblUndated;
     }
 }

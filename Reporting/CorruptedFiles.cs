@@ -1,5 +1,7 @@
 ﻿
 
+using MediaFileManager.Lib;
+
 namespace MediaFileManager.Reporting
 {
     public partial class CorruptedFiles : Form

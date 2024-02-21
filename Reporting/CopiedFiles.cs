@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel;
-
+using MediaFileManager.Lib;
 using MediaFileManager.Utilities;
 
 // ReSharper disable LocalizableElement
@@ -39,6 +39,7 @@ namespace MediaFileManager.Reporting
             lblSkipped.Text = response.FilesNotCopied.ToString();
             lblTotalFiles.Text = response.TotalFiles.ToString();
             lblDuration.Text = response.OperationDuration.ToString(@"hh\:mm\:ss");
+            lblUndated.Text = response.UndatedFiles.ToString();
 
             LoadDataGrid(response);
         }
@@ -53,7 +54,7 @@ namespace MediaFileManager.Reporting
         {
             gridNotCopied.SendToBack();
             gridNotCopied.AutoGenerateColumns = false;
-            gridNotCopied.AllowUserToAddRows  = false;
+            gridNotCopied.AllowUserToAddRows = false;
 
             var source = response.ListOfFilesNotCopied.Select(x => new GridObject
             {
@@ -61,7 +62,7 @@ namespace MediaFileManager.Reporting
                 FilePath  = x.FilePath,
                 FileSize  = Helper.FormatBytes(x.FileSize),
                 FileType  = x.FileType.ToString(),
-                TimeStamp = x.TimeStamp.ToShortDateString()
+                TimeStamp = x.TimeStamp?.ToShortDateString()
             }).ToList();
 
             var list = new SortableBindingList<GridObject>(source);
@@ -101,7 +102,7 @@ namespace MediaFileManager.Reporting
             //    Name             = "Preview",
             //    Image            = Properties.Resources.Image_16x16,
             //    ToolTipText = "Click to Preview File"
-               
+
             //};
             //gridNotCopied.Columns.Add(imgColumn);
 
@@ -114,9 +115,9 @@ namespace MediaFileManager.Reporting
                     HeaderText       = name,
                     DataPropertyName = name.Replace(" ", "")
                 };
-                
+
                 gridNotCopied.Columns.Add(column);
-            } 
+            }
         }
 
         private void gridNotCopied_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -159,7 +160,7 @@ namespace MediaFileManager.Reporting
             {
                 Helper.OpenFile(path);
             }
-            if( e.ColumnIndex != gridNotCopied.Columns["Preview"]?.Index)
+            if (e.ColumnIndex != gridNotCopied.Columns["Preview"]?.Index)
             {
                 Helper.SelectFileInFolder(path);
             }
@@ -185,7 +186,7 @@ namespace MediaFileManager.Reporting
                 else
                 {
                     // Sort a new column and remove the old SortGlyph.
-                    direction                               = ListSortDirection.Ascending;
+                    direction = ListSortDirection.Ascending;
                     oldColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
                 }
             }
@@ -196,7 +197,7 @@ namespace MediaFileManager.Reporting
 
             // Sort the selected column.
             gridNotCopied.Sort(newColumn, direction);
-            newColumn.HeaderCell.SortGlyphDirection = direction == ListSortDirection.Ascending ?SortOrder.Ascending : SortOrder.Descending;
+            newColumn.HeaderCell.SortGlyphDirection = direction == ListSortDirection.Ascending ? SortOrder.Ascending : SortOrder.Descending;
         }
 
         private void btnShowCorrupted_Click(object sender, EventArgs e)
@@ -220,10 +221,10 @@ namespace MediaFileManager.Reporting
     }
     public class GridObject
     {
-        public string FileName  { get; set; }
-        public string FilePath  { get; set; }
-        public string FileSize  { get; set; }
-        public string FileType  { get; set; }
+        public string FileName { get; set; }
+        public string FilePath { get; set; }
+        public string FileSize { get; set; }
+        public string FileType { get; set; }
         public string TimeStamp { get; set; }
     }
 }

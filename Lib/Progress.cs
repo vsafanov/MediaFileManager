@@ -1,4 +1,4 @@
-﻿namespace MediaFileManager
+﻿namespace MediaFileManager.Lib
 {
     public partial class Progress : Form
     {

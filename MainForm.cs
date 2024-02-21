@@ -1,4 +1,5 @@
 ﻿
+using MediaFileManager.Lib;
 using MediaFileManager.Reporting;
 using MediaFileManager.Utilities;
 // using Microsoft.Extensions.Logging;
@@ -9,7 +10,7 @@ using Serilog;
 // ReSharper disable LocalizableElement
 
 namespace MediaFileManager
-{ 
+{
     public partial class MainForm : Form
     {
         // private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod()?.DeclaringType);
@@ -49,8 +50,6 @@ namespace MediaFileManager
             }.ShowDialog();
         }
 
-       
-
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             (new Settings()).ShowDialog();
@@ -73,9 +72,9 @@ namespace MediaFileManager
             {
                 if (Directory.GetFiles(folderBrowserDialog.SelectedPath, "*.*", SearchOption.AllDirectories).Any())
                 {
-                    txtTargetFolderPath.Text = MessageBox.Show("Selected Target Directory is not empty, do you want to use it to copy files to?", "Target Directory: " + folderBrowserDialog.SelectedPath, MessageBoxButtons.YesNo,MessageBoxIcon.Warning) == DialogResult.Yes
+                    txtTargetFolderPath.Text = MessageBox.Show("Selected Target Directory is not empty, do you want to use it to copy files to?", "Target Directory: " + folderBrowserDialog.SelectedPath, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes
                         ? folderBrowserDialog.SelectedPath
-                        :"";
+                        : "";
                 }
                 else
                 {
@@ -115,9 +114,9 @@ namespace MediaFileManager
 
         private void findNewMediaFilesInSourceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            btnFindCorrupted.Visible  = false;
+            btnFindCorrupted.Visible = false;
             btnFindDuplicates.Visible = false;
-            btnFindNew.Visible        = true;
+            btnFindNew.Visible = true;
 
         }
 
@@ -189,7 +188,7 @@ namespace MediaFileManager
             }
             else
             {
-                MessageBox.Show("No duplicated media files found!", "Information", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("No duplicated media files found!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -242,6 +241,56 @@ namespace MediaFileManager
             if (response.ListOfNewFiles.Count > 0)
             {
                 var report = new NewFilesInSource();
+                report.LoadDataGrid(response);
+                report.StartPosition = FormStartPosition.CenterParent;
+                report.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No new media files found in Source Directory!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void findMediaFilesBysizeToolStripMenuItem_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtSourceFolderPath.Text))
+            {
+                MessageBox.Show($@"Please select 'Source Folder'!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtTargetFolderPath.Text))
+            {
+                MessageBox.Show($@"Please select 'Target Folder'!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            var configuration = new Configuration
+
+            {
+                MediaFileExtensions = Properties.Settings.Default.SelectedMediaFilesExtension,
+                //MinFileSizeToCopy   = Properties.Settings.Default.SelectedMinFileSizeToCopy,
+                SourceFolder        = txtSourceFolderPath.Text,
+                TargetFolder        = txtTargetFolderPath.Text
+            };
+
+            var frm = new FindFileBySizeConfig(configuration);
+            var result = frm.ShowDialog();
+            if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            DialogForm.StartProgress(this);
+
+            var manager = new MediaManager(_logger, configuration);
+            var response = manager.FindFilesBySize(frm);
+
+
+            DialogForm.CloseProgress();
+            if (response.ListOfNewFiles.Count > 0)
+            {
+                var report = new NewFilesInSource($"Report for files that less than {frm.MaxFileSize} KB");
                 report.LoadDataGrid(response);
                 report.StartPosition = FormStartPosition.CenterParent;
                 report.ShowDialog();

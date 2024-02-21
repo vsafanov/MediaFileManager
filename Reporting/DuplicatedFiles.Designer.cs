@@ -28,156 +28,165 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DuplicatedFiles));
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.treeView1 = new System.Windows.Forms.TreeView();
-            this.dataGridViewReport = new System.Windows.Forms.DataGridView();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.btnPreview = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnOpenInFolder = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReport)).BeginInit();
-            this.SuspendLayout();
+            splitContainer1 = new SplitContainer();
+            treeView1 = new TreeView();
+            dataGridViewReport = new DataGridView();
+            btnSearch = new Button();
+            txtSearch = new TextBox();
+            btnPreview = new Button();
+            btnClose = new Button();
+            btnOpenInFolder = new Button();
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
+            splitContainer1.Panel1.SuspendLayout();
+            splitContainer1.Panel2.SuspendLayout();
+            splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewReport).BeginInit();
+            SuspendLayout();
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            splitContainer1.Dock = DockStyle.Fill;
+            splitContainer1.Font = new Font("Microsoft Sans Serif", 8F);
+            splitContainer1.Location = new Point(0, 0);
+            splitContainer1.Margin = new Padding(4, 3, 4, 3);
+            splitContainer1.Name = "splitContainer1";
+            splitContainer1.Orientation = Orientation.Horizontal;
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.treeView1);
-            this.splitContainer1.Panel1.Controls.Add(this.dataGridViewReport);
-            this.splitContainer1.Panel1.Padding = new System.Windows.Forms.Padding(10);
+            splitContainer1.Panel1.Controls.Add(treeView1);
+            splitContainer1.Panel1.Controls.Add(dataGridViewReport);
+            splitContainer1.Panel1.Padding = new Padding(12, 12, 12, 12);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.btnSearch);
-            this.splitContainer1.Panel2.Controls.Add(this.txtSearch);
-            this.splitContainer1.Panel2.Controls.Add(this.btnPreview);
-            this.splitContainer1.Panel2.Controls.Add(this.btnClose);
-            this.splitContainer1.Panel2.Controls.Add(this.btnOpenInFolder);
-            this.splitContainer1.Panel2.Margin = new System.Windows.Forms.Padding(20);
-            this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(10);
-            this.splitContainer1.Size = new System.Drawing.Size(616, 644);
-            this.splitContainer1.SplitterDistance = 592;
-            this.splitContainer1.TabIndex = 0;
+            splitContainer1.Panel2.Controls.Add(btnSearch);
+            splitContainer1.Panel2.Controls.Add(txtSearch);
+            splitContainer1.Panel2.Controls.Add(btnPreview);
+            splitContainer1.Panel2.Controls.Add(btnClose);
+            splitContainer1.Panel2.Controls.Add(btnOpenInFolder);
+            splitContainer1.Panel2.Margin = new Padding(23, 23, 23, 23);
+            splitContainer1.Panel2.Padding = new Padding(12, 12, 12, 12);
+            splitContainer1.Size = new Size(719, 743);
+            splitContainer1.SplitterDistance = 683;
+            splitContainer1.SplitterWidth = 5;
+            splitContainer1.TabIndex = 0;
             // 
             // treeView1
             // 
-            this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.treeView1.ForeColor = System.Drawing.Color.DimGray;
-            this.treeView1.Indent = 20;
-            this.treeView1.Location = new System.Drawing.Point(10, 10);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(596, 572);
-            this.treeView1.TabIndex = 1;
+            treeView1.BorderStyle = BorderStyle.None;
+            treeView1.Dock = DockStyle.Fill;
+            treeView1.Font = new Font("Microsoft Sans Serif", 9F);
+            treeView1.ForeColor = Color.DimGray;
+            treeView1.Indent = 20;
+            treeView1.Location = new Point(12, 12);
+            treeView1.Margin = new Padding(4, 3, 4, 3);
+            treeView1.Name = "treeView1";
+            treeView1.Size = new Size(695, 659);
+            treeView1.TabIndex = 1;
             // 
             // dataGridViewReport
             // 
-            this.dataGridViewReport.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dataGridViewReport.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewReport.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridViewReport.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dataGridViewReport.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewReport.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewReport.EnableHeadersVisualStyles = false;
-            this.dataGridViewReport.Location = new System.Drawing.Point(1219, 26);
-            this.dataGridViewReport.MultiSelect = false;
-            this.dataGridViewReport.Name = "dataGridViewReport";
-            this.dataGridViewReport.ReadOnly = true;
-            this.dataGridViewReport.Size = new System.Drawing.Size(17, 533);
-            this.dataGridViewReport.TabIndex = 0;
+            dataGridViewReport.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.BackColor = Color.WhiteSmoke;
+            dataGridViewReport.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewReport.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridViewReport.BackgroundColor = SystemColors.Control;
+            dataGridViewReport.BorderStyle = BorderStyle.None;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.White;
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 8F);
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewReport.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewReport.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewReport.EnableHeadersVisualStyles = false;
+            dataGridViewReport.Location = new Point(1422, 30);
+            dataGridViewReport.Margin = new Padding(4, 3, 4, 3);
+            dataGridViewReport.MultiSelect = false;
+            dataGridViewReport.Name = "dataGridViewReport";
+            dataGridViewReport.ReadOnly = true;
+            dataGridViewReport.Size = new Size(20, 615);
+            dataGridViewReport.TabIndex = 0;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(145, 11);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(72, 30);
-            this.btnSearch.TabIndex = 4;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            btnSearch.Location = new Point(169, 11);
+            btnSearch.Margin = new Padding(4, 3, 4, 3);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(84, 35);
+            btnSearch.TabIndex = 4;
+            btnSearch.Text = "Search";
+            btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
             // 
             // txtSearch
             // 
-            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.txtSearch.Location = new System.Drawing.Point(13, 13);
-            this.txtSearch.MaxLength = 50;
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(130, 23);
-            this.txtSearch.TabIndex = 3;
+            txtSearch.Font = new Font("Microsoft Sans Serif", 9F);
+            txtSearch.Location = new Point(15, 15);
+            txtSearch.Margin = new Padding(4, 3, 4, 3);
+            txtSearch.MaxLength = 50;
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(151, 21);
+            txtSearch.TabIndex = 3;
             // 
             // btnPreview
             // 
-            this.btnPreview.Location = new System.Drawing.Point(334, 10);
-            this.btnPreview.Name = "btnPreview";
-            this.btnPreview.Size = new System.Drawing.Size(76, 30);
-            this.btnPreview.TabIndex = 2;
-            this.btnPreview.Text = "Preview";
-            this.btnPreview.UseVisualStyleBackColor = true;
-            this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
+            btnPreview.Location = new Point(390, 10);
+            btnPreview.Margin = new Padding(4, 3, 4, 3);
+            btnPreview.Name = "btnPreview";
+            btnPreview.Size = new Size(89, 35);
+            btnPreview.TabIndex = 2;
+            btnPreview.Text = "Preview";
+            btnPreview.UseVisualStyleBackColor = true;
+            btnPreview.Click += btnPreview_Click;
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(534, 9);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(61, 30);
-            this.btnClose.TabIndex = 1;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            btnClose.Location = new Point(623, 10);
+            btnClose.Margin = new Padding(4, 3, 4, 3);
+            btnClose.Name = "btnClose";
+            btnClose.Size = new Size(71, 35);
+            btnClose.TabIndex = 1;
+            btnClose.Text = "Close";
+            btnClose.UseVisualStyleBackColor = true;
+            btnClose.Click += btnClose_Click;
             // 
             // btnOpenInFolder
             // 
-            this.btnOpenInFolder.Location = new System.Drawing.Point(417, 9);
-            this.btnOpenInFolder.Name = "btnOpenInFolder";
-            this.btnOpenInFolder.Size = new System.Drawing.Size(111, 30);
-            this.btnOpenInFolder.TabIndex = 0;
-            this.btnOpenInFolder.Text = "Open In Folder";
-            this.btnOpenInFolder.UseVisualStyleBackColor = true;
-            this.btnOpenInFolder.Click += new System.EventHandler(this.btnOpenInFolder_Click);
+            btnOpenInFolder.Location = new Point(486, 10);
+            btnOpenInFolder.Margin = new Padding(4, 3, 4, 3);
+            btnOpenInFolder.Name = "btnOpenInFolder";
+            btnOpenInFolder.Size = new Size(130, 35);
+            btnOpenInFolder.TabIndex = 0;
+            btnOpenInFolder.Text = "Open In Folder";
+            btnOpenInFolder.UseVisualStyleBackColor = true;
+            btnOpenInFolder.Click += btnOpenInFolder_Click;
             // 
             // DuplicatedFiles
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(616, 644);
-            this.Controls.Add(this.splitContainer1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "DuplicatedFiles";
-            this.Text = "Duplicated Files";
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReport)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(719, 743);
+            Controls.Add(splitContainer1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(4, 3, 4, 3);
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "DuplicatedFiles";
+            Text = "Duplicated Files";
+            splitContainer1.Panel1.ResumeLayout(false);
+            splitContainer1.Panel2.ResumeLayout(false);
+            splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
+            splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewReport).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion

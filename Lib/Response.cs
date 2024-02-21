@@ -1,9 +1,11 @@
-﻿namespace MediaFileManager
+﻿namespace MediaFileManager.Lib
 {
     public class Response
     {
         public int TotalFiles { get; set; }
         public int FilesCopied { get; set; }
+
+        public int UndatedFiles { get; set; }
 
         public int FilesNotCopied { get; set; }
         public List<MediaFile> ListOfFilesCopied { get; set; }

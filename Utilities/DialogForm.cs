@@ -4,7 +4,7 @@
     {
         private static Form frm;
         private static Form frmScreen;
-        
+
         public static void StartProgress(Form parentForm)
         {
             frm = parentForm;
@@ -16,7 +16,7 @@
             };
             ShowProgress();
         }
-        public static  void CloseProgress()
+        public static void CloseProgress()
         {
             Thread.Sleep(200);
             frmScreen.Invoke(new Action(frmScreen.Close));

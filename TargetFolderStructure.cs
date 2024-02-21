@@ -1,8 +1,11 @@
 ﻿
 
+using System.Globalization;
+using MediaFileManager.Lib;
+
 namespace MediaFileManager
 {
-    public  class TargetFolderStructure
+    public class TargetFolderStructure
     {
 
 
@@ -15,7 +18,7 @@ namespace MediaFileManager
                 return null;
             }
 
-            if (!IsDateFolder(yearFolder,"yyyy"))
+            if (!IsDateFolder(yearFolder, "yyyy"))
             {
                 return null;
             }
@@ -34,7 +37,8 @@ namespace MediaFileManager
             }
 
             //subfolder is Pictures and videos
-            if (IsPicVideoFolder(yearSubFolder))
+            // if (IsPicVideoFolder(yearSubFolder))
+            if (IsPicVideoFolder(yearFolder))
             {
                 return CreationTemplate.YearPicturesAndVideos;
             }
@@ -46,7 +50,11 @@ namespace MediaFileManager
         {
             try
             {
-                DateTime.ParseExact(folder.Substring(folder.LastIndexOf("\\", StringComparison.OrdinalIgnoreCase) + 1), format, System.Globalization.CultureInfo.InvariantCulture);
+                if (folder == null)
+                {
+                    return false;
+                }
+                DateTime.ParseExact(folder.Substring(folder.LastIndexOf("\\", StringComparison.OrdinalIgnoreCase) + 1), format, CultureInfo.InvariantCulture);
                 return true;
             }
             catch (Exception)
@@ -59,7 +67,6 @@ namespace MediaFileManager
         {
             try
             {
-
                 var subFolder = Directory.GetDirectories(folder).FirstOrDefault();
                 var subFolderName = subFolder?.Substring(subFolder.LastIndexOf("\\", StringComparison.OrdinalIgnoreCase) + 1).ToLower();
                 return subFolderName == "pictures" || subFolderName == "video";

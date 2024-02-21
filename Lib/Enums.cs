@@ -1,4 +1,4 @@
-﻿namespace MediaFileManager
+﻿namespace MediaFileManager.Lib
 {
     public enum MediaFileType
     {
