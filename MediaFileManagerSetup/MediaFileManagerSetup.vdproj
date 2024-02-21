@@ -80,6 +80,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -187,15 +195,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Media File Manager"
-        "ProductCode" = "8:{D9DCD382-3F0E-4417-A199-82C4A3205949}"
-        "PackageCode" = "8:{49202B47-20F0-4D10-BD28-7F360B9CC439}"
+        "ProductCode" = "8:{E5C6ED9D-188F-4221-9E80-062F9C8C9A59}"
+        "PackageCode" = "8:{5AC246A3-7EC8-454B-AAE7-CE6306519F1F}"
         "UpgradeCode" = "8:{B5C45B6B-4A19-4A89-92C7-6FDCBBD5D2DF}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:2.0.0"
         "Manufacturer" = "8:Hubsons LLC"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -737,7 +745,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_F33B4E5A85C84B30A2FACD8B57932D4B"
             {
-            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\Test Media Folder\\MediaFileManager.exe"
+            "SourcePath" = "8:"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_F82EF380BB534C6F9E2FD33180CEA70E"

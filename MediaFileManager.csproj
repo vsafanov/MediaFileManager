@@ -13,6 +13,8 @@
     <Copyright>Hubsons LLC</Copyright>
     <Title>Media File Manager</Title>
     <PackageIcon>picture_24x24.png</PackageIcon>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
