@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Reflection;
 
 namespace MediaFileManager
 {
@@ -8,9 +7,10 @@ namespace MediaFileManager
         public About()
         {
             InitializeComponent();
-
-            var buildTime       = File.GetLastWriteTime(Assembly.GetExecutingAssembly().Location).ToString("MMM dd yyyy - HH:mm:ss");
-            var versionInfo     = FileVersionInfo.GetVersionInfo(Application.ExecutablePath);
+            //MessageBox.Show(Assembly.GetExecutingAssembly().Location);
+            var path = Application.ExecutablePath;
+            var buildTime       = File.GetLastWriteTime(path).ToString("MMM dd yyyy - HH:mm:ss");
+            var versionInfo     = FileVersionInfo.GetVersionInfo(path);
 
             lblVersion.Text = $"Version:           {versionInfo.FileVersion}";
             lblBuildDate.Text = $"Build Date:      {buildTime}";
