@@ -165,6 +165,7 @@
             // 
             // lblWarning
             // 
+            lblWarning.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblWarning.ForeColor = Color.Firebrick;
             lblWarning.Location = new Point(12, 11);
             lblWarning.Name = "lblWarning";
