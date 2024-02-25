@@ -65,8 +65,8 @@
             menu.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1, settingsToolStripMenuItem1, aboutToolStripMenuItem });
             menu.Location = new Point(0, 0);
             menu.Name = "menu";
-            menu.Padding = new Padding(8, 3, 0, 3);
-            menu.Size = new Size(1061, 30);
+            menu.Padding = new Padding(7, 2, 0, 2);
+            menu.Size = new Size(928, 24);
             menu.TabIndex = 0;
             menu.Text = "menu";
             // 
@@ -74,63 +74,64 @@
             // 
             toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { copyMediaFilesToolStripMenuItem, findDuplicatedMediaFilesToolStripMenuItem, findCorruptedMediaFilesToolStripMenuItem, findNewMediaFilesInSourceToolStripMenuItem, findMediaFilesBySizeToolStripMenuItem, exitToolStripMenuItem });
             toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(56, 24);
+            toolStripMenuItem1.Size = new Size(46, 20);
             toolStripMenuItem1.Text = "Main";
             // 
             // copyMediaFilesToolStripMenuItem
             // 
             copyMediaFilesToolStripMenuItem.Name = "copyMediaFilesToolStripMenuItem";
-            copyMediaFilesToolStripMenuItem.Size = new Size(344, 26);
+            copyMediaFilesToolStripMenuItem.Size = new Size(274, 22);
             copyMediaFilesToolStripMenuItem.Text = "Copy Media Files";
             copyMediaFilesToolStripMenuItem.Click += copyMediaFilesToolStripMenuItem_Click;
             // 
             // findDuplicatedMediaFilesToolStripMenuItem
             // 
             findDuplicatedMediaFilesToolStripMenuItem.Name = "findDuplicatedMediaFilesToolStripMenuItem";
-            findDuplicatedMediaFilesToolStripMenuItem.Size = new Size(344, 26);
+            findDuplicatedMediaFilesToolStripMenuItem.Size = new Size(274, 22);
             findDuplicatedMediaFilesToolStripMenuItem.Text = "Find Duplicated Media Files";
             findDuplicatedMediaFilesToolStripMenuItem.Click += findDuplicatedMediaFilesToolStripMenuItem_Click;
             // 
             // findCorruptedMediaFilesToolStripMenuItem
             // 
             findCorruptedMediaFilesToolStripMenuItem.Name = "findCorruptedMediaFilesToolStripMenuItem";
-            findCorruptedMediaFilesToolStripMenuItem.Size = new Size(344, 26);
+            findCorruptedMediaFilesToolStripMenuItem.Size = new Size(274, 22);
             findCorruptedMediaFilesToolStripMenuItem.Text = "Find Corrupted Media Files";
             findCorruptedMediaFilesToolStripMenuItem.Click += findCorruptedMediaFilesToolStripMenuItem_Click;
             // 
             // findNewMediaFilesInSourceToolStripMenuItem
             // 
             findNewMediaFilesInSourceToolStripMenuItem.Name = "findNewMediaFilesInSourceToolStripMenuItem";
-            findNewMediaFilesInSourceToolStripMenuItem.Size = new Size(344, 26);
+            findNewMediaFilesInSourceToolStripMenuItem.Size = new Size(274, 22);
             findNewMediaFilesInSourceToolStripMenuItem.Text = "Find New Media Files in Source Folder";
             findNewMediaFilesInSourceToolStripMenuItem.Click += findNewMediaFilesInSourceToolStripMenuItem_Click;
             // 
             // findMediaFilesBySizeToolStripMenuItem
             // 
             findMediaFilesBySizeToolStripMenuItem.Name = "findMediaFilesBySizeToolStripMenuItem";
-            findMediaFilesBySizeToolStripMenuItem.Size = new Size(344, 26);
+            findMediaFilesBySizeToolStripMenuItem.Size = new Size(274, 22);
             findMediaFilesBySizeToolStripMenuItem.Text = "Find Media Files by Size";
             findMediaFilesBySizeToolStripMenuItem.MouseUp += findMediaFilesBysizeToolStripMenuItem_MouseUp;
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(344, 26);
+            exitToolStripMenuItem.Size = new Size(274, 22);
             exitToolStripMenuItem.Text = "Exit";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
             // settingsToolStripMenuItem1
             // 
             settingsToolStripMenuItem1.Name = "settingsToolStripMenuItem1";
-            settingsToolStripMenuItem1.Size = new Size(76, 24);
+            settingsToolStripMenuItem1.Size = new Size(61, 20);
             settingsToolStripMenuItem1.Text = "Settings";
             settingsToolStripMenuItem1.Click += settingsToolStripMenuItem_Click;
             // 
             // aboutToolStripMenuItem
             // 
             aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            aboutToolStripMenuItem.Size = new Size(64, 24);
+            aboutToolStripMenuItem.Size = new Size(52, 20);
             aboutToolStripMenuItem.Text = "About";
+            aboutToolStripMenuItem.Click += aboutToolStripMenuItem_Click;
             // 
             // groupBox3
             // 
@@ -138,11 +139,11 @@
             groupBox3.Controls.Add(txtTargetFolderPath);
             groupBox3.Controls.Add(btnTargetFolder);
             groupBox3.Font = new Font("Microsoft Sans Serif", 8F);
-            groupBox3.Location = new Point(41, 217);
-            groupBox3.Margin = new Padding(5);
+            groupBox3.Location = new Point(36, 163);
+            groupBox3.Margin = new Padding(4, 4, 4, 4);
             groupBox3.Name = "groupBox3";
-            groupBox3.Padding = new Padding(5);
-            groupBox3.Size = new Size(961, 103);
+            groupBox3.Padding = new Padding(4, 4, 4, 4);
+            groupBox3.Size = new Size(841, 77);
             groupBox3.TabIndex = 18;
             groupBox3.TabStop = false;
             groupBox3.Text = "Destination Folder: ";
@@ -152,10 +153,10 @@
             btnOpenDestFld.AutoSize = true;
             btnOpenDestFld.FlatStyle = FlatStyle.Popup;
             btnOpenDestFld.Image = Properties.Resources.folder_24x24;
-            btnOpenDestFld.Location = new Point(11, 41);
-            btnOpenDestFld.Margin = new Padding(5);
+            btnOpenDestFld.Location = new Point(10, 31);
+            btnOpenDestFld.Margin = new Padding(4, 4, 4, 4);
             btnOpenDestFld.Name = "btnOpenDestFld";
-            btnOpenDestFld.Size = new Size(34, 40);
+            btnOpenDestFld.Size = new Size(30, 30);
             btnOpenDestFld.TabIndex = 8;
             toolTipOpenFolder.SetToolTip(btnOpenDestFld, "Open Destination Folder");
             btnOpenDestFld.UseVisualStyleBackColor = true;
@@ -166,11 +167,11 @@
             txtTargetFolderPath.Anchor = AnchorStyles.Left;
             txtTargetFolderPath.BackColor = SystemColors.ControlLightLight;
             txtTargetFolderPath.Font = new Font("Microsoft Sans Serif", 10.2F);
-            txtTargetFolderPath.Location = new Point(58, 43);
-            txtTargetFolderPath.Margin = new Padding(5);
+            txtTargetFolderPath.Location = new Point(51, 32);
+            txtTargetFolderPath.Margin = new Padding(4, 4, 4, 4);
             txtTargetFolderPath.Name = "txtTargetFolderPath";
             txtTargetFolderPath.ReadOnly = true;
-            txtTargetFolderPath.Size = new Size(745, 27);
+            txtTargetFolderPath.Size = new Size(652, 23);
             txtTargetFolderPath.TabIndex = 7;
             // 
             // btnTargetFolder
@@ -179,10 +180,10 @@
             btnTargetFolder.BackColor = SystemColors.Control;
             btnTargetFolder.FlatAppearance.BorderColor = Color.White;
             btnTargetFolder.Font = new Font("Segoe UI", 9F);
-            btnTargetFolder.Location = new Point(809, 41);
-            btnTargetFolder.Margin = new Padding(5);
+            btnTargetFolder.Location = new Point(708, 31);
+            btnTargetFolder.Margin = new Padding(4, 4, 4, 4);
             btnTargetFolder.Name = "btnTargetFolder";
-            btnTargetFolder.Size = new Size(133, 40);
+            btnTargetFolder.Size = new Size(116, 30);
             btnTargetFolder.TabIndex = 6;
             btnTargetFolder.Text = "Browse...";
             btnTargetFolder.TextImageRelation = TextImageRelation.TextBeforeImage;
@@ -196,11 +197,11 @@
             groupBox2.Controls.Add(txtSourceFolderPath);
             groupBox2.Controls.Add(btnSourceFolder);
             groupBox2.Font = new Font("Microsoft Sans Serif", 8F);
-            groupBox2.Location = new Point(41, 83);
-            groupBox2.Margin = new Padding(5);
+            groupBox2.Location = new Point(36, 62);
+            groupBox2.Margin = new Padding(4, 4, 4, 4);
             groupBox2.Name = "groupBox2";
-            groupBox2.Padding = new Padding(5);
-            groupBox2.Size = new Size(961, 103);
+            groupBox2.Padding = new Padding(4, 4, 4, 4);
+            groupBox2.Size = new Size(841, 77);
             groupBox2.TabIndex = 17;
             groupBox2.TabStop = false;
             groupBox2.Text = "Source Folder: ";
@@ -210,10 +211,10 @@
             btnOpenSourceFld.AutoSize = true;
             btnOpenSourceFld.FlatStyle = FlatStyle.Popup;
             btnOpenSourceFld.Image = Properties.Resources.folder_24x24;
-            btnOpenSourceFld.Location = new Point(11, 43);
-            btnOpenSourceFld.Margin = new Padding(5);
+            btnOpenSourceFld.Location = new Point(10, 32);
+            btnOpenSourceFld.Margin = new Padding(4, 4, 4, 4);
             btnOpenSourceFld.Name = "btnOpenSourceFld";
-            btnOpenSourceFld.Size = new Size(34, 40);
+            btnOpenSourceFld.Size = new Size(30, 30);
             btnOpenSourceFld.TabIndex = 3;
             toolTipOpenFolder.SetToolTip(btnOpenSourceFld, "Open Source Folder");
             btnOpenSourceFld.UseVisualStyleBackColor = true;
@@ -224,11 +225,11 @@
             txtSourceFolderPath.Anchor = AnchorStyles.Left;
             txtSourceFolderPath.BackColor = SystemColors.ControlLightLight;
             txtSourceFolderPath.Font = new Font("Microsoft Sans Serif", 10.2F);
-            txtSourceFolderPath.Location = new Point(55, 45);
-            txtSourceFolderPath.Margin = new Padding(5);
+            txtSourceFolderPath.Location = new Point(48, 34);
+            txtSourceFolderPath.Margin = new Padding(4, 4, 4, 4);
             txtSourceFolderPath.Name = "txtSourceFolderPath";
             txtSourceFolderPath.ReadOnly = true;
-            txtSourceFolderPath.Size = new Size(745, 27);
+            txtSourceFolderPath.Size = new Size(652, 23);
             txtSourceFolderPath.TabIndex = 2;
             // 
             // btnSourceFolder
@@ -237,10 +238,10 @@
             btnSourceFolder.BackColor = SystemColors.Control;
             btnSourceFolder.FlatAppearance.BorderColor = Color.White;
             btnSourceFolder.Font = new Font("Segoe UI", 9F);
-            btnSourceFolder.Location = new Point(808, 45);
-            btnSourceFolder.Margin = new Padding(5);
+            btnSourceFolder.Location = new Point(707, 34);
+            btnSourceFolder.Margin = new Padding(4, 4, 4, 4);
             btnSourceFolder.Name = "btnSourceFolder";
-            btnSourceFolder.Size = new Size(133, 40);
+            btnSourceFolder.Size = new Size(116, 30);
             btnSourceFolder.TabIndex = 1;
             btnSourceFolder.Text = "Browse...";
             btnSourceFolder.TextImageRelation = TextImageRelation.TextBeforeImage;
@@ -264,10 +265,10 @@
             btnFindDuplicates.BackColor = SystemColors.Control;
             btnFindDuplicates.FlatAppearance.BorderColor = Color.White;
             btnFindDuplicates.Font = new Font("Segoe UI", 9F);
-            btnFindDuplicates.Location = new Point(855, 357);
-            btnFindDuplicates.Margin = new Padding(5);
+            btnFindDuplicates.Location = new Point(748, 268);
+            btnFindDuplicates.Margin = new Padding(4, 4, 4, 4);
             btnFindDuplicates.Name = "btnFindDuplicates";
-            btnFindDuplicates.Size = new Size(149, 45);
+            btnFindDuplicates.Size = new Size(130, 34);
             btnFindDuplicates.TabIndex = 19;
             btnFindDuplicates.Text = "Find Duplicates";
             btnFindDuplicates.TextImageRelation = TextImageRelation.TextBeforeImage;
@@ -281,10 +282,10 @@
             btnFindCorrupted.BackColor = SystemColors.Control;
             btnFindCorrupted.FlatAppearance.BorderColor = Color.White;
             btnFindCorrupted.Font = new Font("Segoe UI", 9F);
-            btnFindCorrupted.Location = new Point(855, 357);
-            btnFindCorrupted.Margin = new Padding(5);
+            btnFindCorrupted.Location = new Point(748, 268);
+            btnFindCorrupted.Margin = new Padding(4, 4, 4, 4);
             btnFindCorrupted.Name = "btnFindCorrupted";
-            btnFindCorrupted.Size = new Size(149, 45);
+            btnFindCorrupted.Size = new Size(130, 34);
             btnFindCorrupted.TabIndex = 20;
             btnFindCorrupted.Text = "Find Corrupted";
             btnFindCorrupted.TextImageRelation = TextImageRelation.TextBeforeImage;
@@ -298,10 +299,10 @@
             btnFindNew.BackColor = SystemColors.Control;
             btnFindNew.FlatAppearance.BorderColor = Color.White;
             btnFindNew.Font = new Font("Segoe UI", 9F);
-            btnFindNew.Location = new Point(849, 357);
-            btnFindNew.Margin = new Padding(5);
+            btnFindNew.Location = new Point(743, 268);
+            btnFindNew.Margin = new Padding(4, 4, 4, 4);
             btnFindNew.Name = "btnFindNew";
-            btnFindNew.Size = new Size(153, 45);
+            btnFindNew.Size = new Size(134, 34);
             btnFindNew.TabIndex = 21;
             btnFindNew.Text = "Find New In Source";
             btnFindNew.TextImageRelation = TextImageRelation.TextBeforeImage;
@@ -320,10 +321,10 @@
             // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
-            ClientSize = new Size(1061, 437);
+            ClientSize = new Size(928, 328);
             Controls.Add(btnFindNew);
             Controls.Add(btnFindCorrupted);
             Controls.Add(btnFindDuplicates);
@@ -332,7 +333,7 @@
             Controls.Add(menu);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menu;
-            Margin = new Padding(5);
+            Margin = new Padding(4, 4, 4, 4);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "MainForm";

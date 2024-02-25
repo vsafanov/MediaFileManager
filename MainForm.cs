@@ -1,5 +1,4 @@
-﻿
-using MediaFileManager.Lib;
+﻿using MediaFileManager.Lib;
 using MediaFileManager.Reporting;
 using MediaFileManager.Utilities;
 // using Microsoft.Extensions.Logging;
@@ -299,6 +298,11 @@ namespace MediaFileManager
             {
                 MessageBox.Show("No new media files found in Source Directory!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new About().ShowDialog(this);
         }
     }
 }

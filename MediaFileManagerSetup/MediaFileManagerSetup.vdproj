@@ -87,6 +87,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.CoreRuntime.8.0.x64"
+                    {
+                    "Name" = "8:.NET Runtime 8.0.2 (x64)"
+                    "ProductCode" = "8:Microsoft.NetCore.CoreRuntime.8.0.x64"
+                    }
+                }
             }
         }
     }
@@ -196,7 +204,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Media File Manager"
         "ProductCode" = "8:{E5C6ED9D-188F-4221-9E80-062F9C8C9A59}"
-        "PackageCode" = "8:{5AC246A3-7EC8-454B-AAE7-CE6306519F1F}"
+        "PackageCode" = "8:{FFC2D32B-9803-46F7-812B-70D52CCC7277}"
         "UpgradeCode" = "8:{B5C45B6B-4A19-4A89-92C7-6FDCBBD5D2DF}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -745,7 +753,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_F33B4E5A85C84B30A2FACD8B57932D4B"
             {
-            "SourcePath" = "8:"
+            "SourcePath" = "8:..\\bin\\Release\\net8.0-windows10.0.17763.0\\win-x64\\app.publish\\MediaFileManager.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_F82EF380BB534C6F9E2FD33180CEA70E"
