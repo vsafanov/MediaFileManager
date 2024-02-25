@@ -36,8 +36,9 @@
             lblFileSize = new Label();
             btnSearch = new Button();
             btnClose = new Button();
-            numericUpDownFileSize = new NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownFileSize).BeginInit();
+            txtFileSize = new TextBox();
+            txtMinFileSize = new TextBox();
+            lblMinFileSize = new Label();
             SuspendLayout();
             // 
             // lblFindIn
@@ -94,7 +95,7 @@
             // lblFileSize
             // 
             lblFileSize.AutoSize = true;
-            lblFileSize.Location = new Point(313, 70);
+            lblFileSize.Location = new Point(313, 89);
             lblFileSize.Name = "lblFileSize";
             lblFileSize.Size = new Size(99, 15);
             lblFileSize.TabIndex = 8;
@@ -106,10 +107,10 @@
             btnSearch.BackColor = SystemColors.Control;
             btnSearch.FlatAppearance.BorderColor = Color.White;
             btnSearch.Font = new Font("Segoe UI", 9F);
-            btnSearch.Location = new Point(306, 121);
+            btnSearch.Location = new Point(332, 130);
             btnSearch.Margin = new Padding(4);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(116, 30);
+            btnSearch.Size = new Size(91, 30);
             btnSearch.TabIndex = 11;
             btnSearch.Text = "Search";
             btnSearch.TextImageRelation = TextImageRelation.TextBeforeImage;
@@ -122,37 +123,56 @@
             btnClose.BackColor = SystemColors.Control;
             btnClose.FlatAppearance.BorderColor = Color.White;
             btnClose.Font = new Font("Segoe UI", 9F);
-            btnClose.Location = new Point(431, 121);
+            btnClose.Location = new Point(431, 130);
             btnClose.Margin = new Padding(4);
             btnClose.Name = "btnClose";
-            btnClose.Size = new Size(116, 30);
+            btnClose.Size = new Size(101, 30);
             btnClose.TabIndex = 12;
             btnClose.Text = "Close";
             btnClose.TextImageRelation = TextImageRelation.TextBeforeImage;
             btnClose.UseVisualStyleBackColor = false;
             btnClose.Click += btnClose_Click;
             // 
-            // numericUpDownFileSize
+            // txtFileSize
             // 
-            numericUpDownFileSize.Increment = new decimal(new int[] { 10, 0, 0, 0 });
-            numericUpDownFileSize.Location = new Point(433, 68);
-            numericUpDownFileSize.Margin = new Padding(3, 2, 3, 2);
-            numericUpDownFileSize.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
-            numericUpDownFileSize.Minimum = new decimal(new int[] { 10, 0, 0, 0 });
-            numericUpDownFileSize.Name = "numericUpDownFileSize";
-            numericUpDownFileSize.Size = new Size(108, 23);
-            numericUpDownFileSize.TabIndex = 14;
-            numericUpDownFileSize.ThousandsSeparator = true;
-            numericUpDownFileSize.Value = new decimal(new int[] { 10, 0, 0, 0 });
-            numericUpDownFileSize.KeyPress += numericUpDownFileSize_ValueChanged;
+            txtFileSize.Location = new Point(431, 87);
+            txtFileSize.MaxLength = 9;
+            txtFileSize.Name = "txtFileSize";
+            txtFileSize.Size = new Size(100, 23);
+            txtFileSize.TabIndex = 15;
+            txtFileSize.Text = "100";
+            txtFileSize.TextChanged += txtFileSize_TextChanged;
+            txtFileSize.KeyPress += txtFileSize_KeyPress;
+            // 
+            // txtMinFileSize
+            // 
+            txtMinFileSize.Location = new Point(431, 58);
+            txtMinFileSize.MaxLength = 9;
+            txtMinFileSize.Name = "txtMinFileSize";
+            txtMinFileSize.Size = new Size(100, 23);
+            txtMinFileSize.TabIndex = 17;
+            txtMinFileSize.Text = "10";
+            txtMinFileSize.TextChanged += txtFileSize_TextChanged;
+            txtMinFileSize.KeyPress += txtFileSize_KeyPress;
+            // 
+            // lblMinFileSize
+            // 
+            lblMinFileSize.AutoSize = true;
+            lblMinFileSize.Location = new Point(313, 60);
+            lblMinFileSize.Name = "lblMinFileSize";
+            lblMinFileSize.Size = new Size(97, 15);
+            lblMinFileSize.TabIndex = 16;
+            lblMinFileSize.Text = "Min File Size (KB)";
             // 
             // FindFileBySizeConfig
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
-            ClientSize = new Size(571, 161);
-            Controls.Add(numericUpDownFileSize);
+            ClientSize = new Size(559, 169);
+            Controls.Add(txtMinFileSize);
+            Controls.Add(lblMinFileSize);
+            Controls.Add(txtFileSize);
             Controls.Add(btnClose);
             Controls.Add(btnSearch);
             Controls.Add(lblFileSize);
@@ -167,7 +187,6 @@
             Name = "FindFileBySizeConfig";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Find Media Files By Size";
-            ((System.ComponentModel.ISupportInitialize)numericUpDownFileSize).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -183,6 +202,8 @@
         private Label lblFileSize;
         private Button btnSearch;
         private Button btnClose;
-        private NumericUpDown numericUpDownFileSize;
+        private TextBox txtFileSize;
+        private TextBox txtMinFileSize;
+        private Label lblMinFileSize;
     }
 }

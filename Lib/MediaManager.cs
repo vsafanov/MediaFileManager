@@ -65,7 +65,14 @@ namespace MediaFileManager.Lib
 
                 if (!string.IsNullOrEmpty(dateTaken) && dateTaken != "0000:00:00 00:00:00")
                 {
-                    date = DateTime.ParseExact((fileType == MediaFileType.Video ? dateModified : dateTaken) ?? string.Empty, format, CultureInfo.InvariantCulture);
+                    date = DateTime.ParseExact(dateTaken, format, CultureInfo.InvariantCulture);
+                }
+                else
+                {
+                    if (fileType == MediaFileType.Video && !string.IsNullOrEmpty(dateModified))
+                    {
+                        date = DateTime.ParseExact(dateModified, "ddd MMM dd HH:mm:ss zzzz yyyy", CultureInfo.InvariantCulture);
+                    }
                 }
 
                 var size = long.Parse(fileSize?.Replace("bytes", "") ?? "0".Trim());
@@ -88,10 +95,11 @@ namespace MediaFileManager.Lib
             }
             catch (Exception ex)
             {
-                exceptions.Add(ex.Message);
+                var msg = $"Error copying file '{file}': " + ex.Message;
+                exceptions.Add(msg);
 
-                _logger.Warning(ex.Message + " : " + file);
-                Console.WriteLine("Error: " + ex.Message);
+                _logger.Warning(msg);
+                Console.WriteLine(msg);
             }
         }
 
@@ -386,10 +394,18 @@ namespace MediaFileManager.Lib
 
             var videoFilesExt = filters.Where(f=>!imageFilesExt.Contains(f));
 
-            var fileTypeToSearch = config.SelectedFolder.ToLower() == "video"?videoFilesExt:imageFilesExt;
+            var fileTypeToSearch = config.SelectedFileType.ToLower() == "video"?videoFilesExt:imageFilesExt;
+
+            //var all = Directory.GetFiles(config.SelectedFolder, "*.*", SearchOption.AllDirectories);
+
+            //var ext = all.Select(file => new FileInfo(file))
+            //    .Where(file => fileTypeToSearch.Contains(file.Extension.ToLower()));
+
+            //var size = ext.Where(file => file.Length < config.MaxFileSize * 1024);
 
             var filteredImages = Directory.GetFiles(config.SelectedFolder, "*.*", SearchOption.AllDirectories)
-            .Select(file=> new FileInfo(file)).Where(file => file.Length < config.MaxFileSize * 1024 && fileTypeToSearch.Contains(file.Extension))
+            .Select(file=> new FileInfo(file))
+            .Where(file => file.Length >= config.MinFileSize * 1024 && file.Length < config.MaxFileSize * 1024 && fileTypeToSearch.Contains(file.Extension.ToLower()))
             .Select(f => new MediaFile()
             {
                 FileName = f.Name,

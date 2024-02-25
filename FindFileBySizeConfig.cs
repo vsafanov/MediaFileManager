@@ -7,6 +7,7 @@ namespace MediaFileManager
         public string SelectedFolder { get; set; }
         public string SelectedFileType { get; set; }
         public int MaxFileSize { get; set; }
+        public int MinFileSize { get; set; }
         private readonly Configuration settings;
         public FindFileBySizeConfig(Configuration settings)
         {
@@ -21,7 +22,8 @@ namespace MediaFileManager
         {
             SelectedFolder = lblselectedFolderPath.Text;
             SelectedFileType = cmbFileType.SelectedItem.ToString();
-            MaxFileSize = (int)numericUpDownFileSize.Value;
+            MaxFileSize = int.Parse(txtFileSize.Text);
+            MinFileSize = int.Parse(txtMinFileSize.Text);
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
@@ -37,19 +39,23 @@ namespace MediaFileManager
             lblselectedFolderPath.Text = cmbFolders.SelectedIndex == 0 ? settings.SourceFolder : settings.TargetFolder;
         }
 
-        private void numericUpDownFileSize_ValueChanged(object sender, EventArgs e)
+
+        private void txtFileSize_TextChanged(object sender, EventArgs e)
         {
-            if (numericUpDownFileSize.Value > 1000000)
+            var control = sender as TextBox;
+            var result = control == txtFileSize ? 10 : 100;
+            if (!int.TryParse(txtFileSize.Text, out result))
             {
-                numericUpDownFileSize.Value = 1000000;
+                control.Text = result.ToString();
             }
         }
 
-        private void numericUpDownFileSize_ValueChanged(object sender, KeyPressEventArgs e)
+        private void txtFileSize_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (numericUpDownFileSize.Value >= 1000000)
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back && e.KeyChar != (char)Keys.Delete)
             {
-                numericUpDownFileSize.Value = 1000000;
+
+                e.Handled = true;
             }
         }
     }

@@ -27,7 +27,8 @@ namespace MediaFileManager.Reporting
                 FilePath = x.FilePath,
                 FileSize = Helper.FormatBytes(x.FileSize),
                 FileType = x.FileType.ToString(),
-                TimeStamp = x.TimeStamp?.ToShortDateString()
+                TimeStamp = x.TimeStamp?.ToShortDateString(),
+                FileSizeBytes = x.FileSize
             }).ToList();
 
             var list = new SortableBindingList<GridObject>(source);
@@ -60,7 +61,7 @@ namespace MediaFileManager.Reporting
             btnColumnPreview.DefaultCellStyle.Padding = p;
             btnColumnFolder.DefaultCellStyle.Padding = p;
 
-            var listColumns = "File Path,File Size,Time Stamp";
+            var listColumns = "File Path,File Size,Time Stamp, File Size Bytes";
 
 
             foreach (var item in listColumns.Split(','))

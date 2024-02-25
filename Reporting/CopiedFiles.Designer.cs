@@ -82,7 +82,9 @@
             gridErrors.AllowUserToDeleteRows = false;
             gridErrors.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             gridErrors.BackgroundColor = SystemColors.ControlLightLight;
+            gridErrors.BorderStyle = BorderStyle.Fixed3D;
             gridErrors.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            gridErrors.GridColor = SystemColors.Info;
             gridErrors.Location = new Point(0, 324);
             gridErrors.Name = "gridErrors";
             gridErrors.ReadOnly = true;
@@ -190,13 +192,17 @@
             // 
             // btnShowErrors
             // 
+            btnShowErrors.FlatAppearance.BorderColor = Color.Red;
+            btnShowErrors.FlatStyle = FlatStyle.Flat;
             btnShowErrors.Font = new Font("Microsoft Sans Serif", 9F);
+            btnShowErrors.ForeColor = Color.Red;
             btnShowErrors.Location = new Point(33, 763);
             btnShowErrors.Name = "btnShowErrors";
             btnShowErrors.Size = new Size(100, 30);
             btnShowErrors.TabIndex = 12;
             btnShowErrors.Text = "Show Errors";
             btnShowErrors.UseVisualStyleBackColor = true;
+            btnShowErrors.Visible = false;
             btnShowErrors.Click += btnShowErrors_Click;
             // 
             // btnShowCorrupted

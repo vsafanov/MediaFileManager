@@ -35,6 +35,8 @@ namespace MediaFileManager.Reporting
             gridErrors.DataSource = response.ExceptionList.Select(x => new { Error = x }).ToList();
             btnShowErrors.Visible = response.ExceptionList.Any();
 
+            //gridErrors.Visible = btnShowErrors.Visible;
+
             lblCopied.Text = response.FilesCopied.ToString();
             lblSkipped.Text = response.FilesNotCopied.ToString();
             lblTotalFiles.Text = response.TotalFiles.ToString();
@@ -62,7 +64,8 @@ namespace MediaFileManager.Reporting
                 FilePath  = x.FilePath,
                 FileSize  = Helper.FormatBytes(x.FileSize),
                 FileType  = x.FileType.ToString(),
-                TimeStamp = x.TimeStamp?.ToShortDateString()
+                TimeStamp = x.TimeStamp?.ToShortDateString(),
+                FileSizeBytes = x.FileSize
             }).ToList();
 
             var list = new SortableBindingList<GridObject>(source);
@@ -95,7 +98,7 @@ namespace MediaFileManager.Reporting
             btnColumnPreview.DefaultCellStyle.Padding = p;
             btnColumnFolder.DefaultCellStyle.Padding = p;
 
-            var listColumns = "File Path,File Size,Time Stamp";
+            var listColumns = "File Path,File Size,Time Stamp,File Size Bytes";
 
             //DataGridViewImageColumn imgColumn = new DataGridViewImageColumn()
             //{
@@ -226,5 +229,7 @@ namespace MediaFileManager.Reporting
         public string FileSize { get; set; }
         public string FileType { get; set; }
         public string TimeStamp { get; set; }
+
+        public long FileSizeBytes { get; set; }
     }
 }
